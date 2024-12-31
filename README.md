@@ -9,7 +9,12 @@ to reference for the community.
 
 ## Current Progress
 
-Transcriptions are ongoing. Stay tuned for updates!
+Below are the transcripts completed or in progress:
+
+- **0th**: Informal introduction to Nix language, derivations and nixpkgs (Finished)
+- **2nd**: Overriding derivations, fixed-output derivations, sharing closures
+- **3rd**: Flake updating, nix edit and some corners of the nix language
+- **4th**: Comparing flakes to traditional nix (Finished)
 
 ---
 
