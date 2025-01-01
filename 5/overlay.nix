@@ -1,7 +1,7 @@
 self: super: {
   airshipper = super.airshipper.overrideAttrs (old: rec {
-    version = 0.9.0
-    src = fetchFromGitLab {
+    version = 0.9.0;
+    src = self.fetchFromGitLab {
         owner = "Veloren";
         repo = "airshipper";
         rev = "v${version}";
