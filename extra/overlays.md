@@ -165,3 +165,23 @@ that we use within mozilla for discussing
 * **self**: Fix-point result.
 * **super**: Result of the composition before this file
 
+We call this `self` and `super` and it's not clear when you see them. So `self` is basically, in nix packages you
+have a fixed-point, you have all the stages and you have a fixed-point which basically takes the output and give
+it back at the input of all of them, and `super` is you have all of these stages and it's the previous one. You take
+the next stage, it's the previous one, and so on, so that's out, that's basically all it is.
+
+But that doesn't tell you how to use them. `self` is made to basically find all the dependencies, so if you have a
+package and you package depends on say, Bison or Firefox then you will use `self`.
+
+### Self
+
+* Used for derivation result.
+
+You will say `self.sed`, `self.bison`, `self.firefox` and that's all. If you want to use `self` for anything else,
+that's wrong, that's the only bullet point here, that's the bullet. `super` is basically all the rest, is if you have
+functions called packages or library functions or write text or `runCommand`, if you have functions it comes from
+`super`. If you want to override the recipe it comes from `super`. It comes from `super` for the following reason.
+Let's say I have said I want to override something in sed? (10:16) or I want to after overriding something in sed?
+I want to define it at sed? You get an infinite loop because you say I want a recipe of the thing that I just defined,
+and that's why you have to look for recipes for making packages in the previous ones until you find one and that's why
+also overlays are ordered as opposed to NixOS modules 10.43
