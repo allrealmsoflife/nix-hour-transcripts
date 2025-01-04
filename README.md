@@ -9,7 +9,7 @@ to reference for the community.
 
 To have a more complete experience following along have the nixpkgs locally:
 
-# Fork, Clone, and Sync Nixpkgs Locally
+### Fork, Clone, and Sync Nixpkgs Locally
 
 1. Fork the repository on GitHub by visiting [Nixpkgs](https://github.com/NixOS/nixpkgs) and clicking the "Fork" button.
 
@@ -24,7 +24,7 @@ To have a more complete experience following along have the nixpkgs locally:
    git merge upstream/master
 ```
 
-## Current Progress
+### Current Progress
 
 Below are the transcripts completed or in progress:
 
