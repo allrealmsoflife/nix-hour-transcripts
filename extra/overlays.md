@@ -93,4 +93,75 @@ self: super:
 }
 ```
 
-So this is the simplest overlays that you can make, it takes two arguments, one is self the other is super.
+So this is the simplest overlays that you can make, it takes two arguments, one is self the other is super and
+you give it an empty set and you extend nixpkgs with nothing. Great!
+
+### Nixpkgs Internal
+
+```nix
+stdenvAdapters = self: super: ...;
+trivialBuilders = self: super: ...;
+stdenvBootstappingAndPlatforms = self: super: ...;
+platformCompat = self: super: ...;
+splice = self: super: ...;
+allPackages = self: super: ...;
+stdenvOverrides = self: super: ...;
+configOverrides = self: super: ...;
+```
+
+So overlays are not just some things that are made up, it's actually the internal of nixpkgs.
+Nixpkgs is using the overlay system expect that it's doing a mess which is currently highlighted
+in this slide and it's using the overlay system to basically stage the different levels of nixpkgs
+that we currently have.
+
+So this basically, the things that I did was like, I was trying to do the grafting work again, yeah
+if you recall this, the presentation from two years ago, and I realize that huh, there is this function
+`overridePackages` which gives me tons of trouble, and I can replace it and just add overlays at the end
+and that's basically all it is. Overlays are just adding something to the internal of nixpkgs and you
+get to extend all of nixpkgs. And I can remove one of the side features that was there and was awful in
+terms of performance and hey, no longer here so now we have overlays, yes!
+
+### Examples
+
+```nix
+self: super:
+
+{
+  google-chrome = super.google-chrome.override {
+    commandLineArgs =
+      ''--proxy-server="https=127.0.0.1:3128;http=127.0.0.1:3128"'';
+  };
+}
+```
+
+It's resourceful internet, you find tons of things, and sometimes you find good examples and this one is
+just adding a command line, a command line argument to a google chrome which is saying hey, use this proxy
+to redirect all my network connections through this proxy which is really nice, especially if you can set it
+on the command line and get all the nice feature protections that you get with a proxy, so okay, that's a good
+way to get an overlay, and you need to recompile once more so why we are discussing about recompilation?
+
+```nix
+self: super:
+{
+  nix = super.nix.override {
+    storeDir = "${<nix-dir>}/store";
+    stateDir = "${<nix-dir>}/var";
+  };
+}
+```
+
+https://yrh.dev/blog/nix-in-custom-location/
+
+Some other people wanted to get Nix but in a different directory and basically this is interesting if you are
+stuck in your home and you have no root access for adding the nix directory at the top level so this is a simplified
+example but has the same ideas which is that you want to configure nix to have it's nix store at a different
+directory and that's an interesting one as well.
+
+So then you have other example where you just have ordinary packages as we do in nixpkgs and just one of the tools
+that we use within mozilla for discussing
+
+### 2. Arguments
+
+* **self**: Fix-point result.
+* **super**: Result of the composition before this file
+
