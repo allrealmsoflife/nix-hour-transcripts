@@ -32,8 +32,8 @@ Below are the transcripts completed or in progress:
 - 1: 
 - 2: Overriding derivations, fixed-output derivations, sharing closures
 - 3: Flake updating, nix edit and some corners of the nix language
-- 4: Comparing flakes to traditional nix (Finished)
-- 5: Overriding a rust source, derivation internally, closure inspection (Finished)
+- [4: Comparing flakes to traditional nix](episodes/4/4.md) &#x2705;
+- [5: Overriding a rust source, derivation internally, closure inspection](episodes/5/5.md) &#x2705;
 ---
 
 *Transcriptions by Domagoj Mišković.*
