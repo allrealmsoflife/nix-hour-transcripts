@@ -28,7 +28,7 @@ To have a more complete experience following along have the nixpkgs locally:
 
 Below are the transcripts completed or in progress:
 
-- [0](episodes/0.md): Informal introduction to Nix language, derivations and nixpkgs
+- [0](episodes/0/0.md): Informal introduction to Nix language, derivations and nixpkgs
 - 1: 
 - 2: Overriding derivations, fixed-output derivations, sharing closures
 - 3: Flake updating, nix edit and some corners of the nix language
