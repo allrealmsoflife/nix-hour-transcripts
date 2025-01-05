@@ -1,4 +1,3 @@
-
 let 
   pkgs = import <nixpkgs> {
     overlays = [
@@ -6,9 +5,13 @@ let
         hello = (prev.hello.override {
           fetchurl = throw "not fetchurl";
         }).overrideAttrs (oldAttrs: {
-          src = oldAttrs.src;
           
-          nativeBuildInputs = oldAttrs.nativeBuildInputs or [] ++ [
+          src = fetchurl {
+            url = "mirror://gnu/hello/hello-${finalattrs.version}.tar.gz";
+            hash = "sha256-jzkukv2sv28wsm18tcqnxoczmlxdyh2idh9rlibh2ya=";
+          };
+
+          nativebuildinputs = oldAttrs.nativebuildinputs or [] ++ [
             final.jq
           ];
         });
