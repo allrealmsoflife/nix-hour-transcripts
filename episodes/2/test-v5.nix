@@ -11,7 +11,7 @@ let
           #hash = "sha256-jzkukv2sv28wsm18tcqnxoczmlxdyh2idh9rlibh2ya=";
           #};
 
-          nativebuildinputs = (oldAttrs.nativebuildinputs or []) ++ [
+          nativebuildinputs = (finalAttrs.nativebuildinputs or []) ++ [
             final.jq
           ];
         });
