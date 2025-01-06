@@ -184,4 +184,31 @@ functions called packages or library functions or write text or `runCommand`, if
 Let's say I have said I want to override something in sed? (10:16) or I want to after overriding something in sed?
 I want to define it at sed? You get an infinite loop because you say I want a recipe of the thing that I just defined,
 and that's why you have to look for recipes for making packages in the previous ones until you find one and that's why
-also overlays are ordered as opposed to NixOS modules 10.43
+also overlays are ordered as opposed to NixOS modules.
+
+So okay, we saw `self` and `super`, now I will ask you to raise your hand as soon as you find issues in this examples,
+so if you find one issue raise you hand that way, if you find two issues raise your hand that way and if you are watching
+this talk remotely then you have then end key to see the answers (smiles).
+
+### Bad Example (2 issues)
+
+```nix
+self: super: rec {
+  fakeClosure = self.writeText "fake-closure.nix" ''
+  ...
+  '';
+  fakeConfig = self.writeText "fake-config.nix" ''
+    (import ${fakeClosure} {}).config.nixpkgs.config
+  '';
+}
+```
+
+Okay, I see a few hands. So the first issue is like `writeText`, `writeText` is basically a function, it generates a
+derivation but it's a function, as a function it comes from `super`, not `self`, and the other one is a bit subtle
+to see, it's the `fakeClosure`, the `fakeClosure` is coming from above because of the `rec` keyword, and it's not
+nice to make an overlay which is using the `rec` keyword because if you are using the `rec` keyword, basically that
+means that you are looping within your overlay and not from the `self`, from the nixpkgs fixed-point which means
+then that overlays which comes after has no opportunity to change that. So the `fakeClosure` loops inside instead of
+looping around and if you want to give more opportunities to your users you should use `self` instead of `rec`.
+
+So let's look at another 12.25
