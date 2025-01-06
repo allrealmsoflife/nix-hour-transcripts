@@ -54,7 +54,43 @@
 
   booleanOps = (true && ! false) || (true -> false);
 
-  someFun = x: x + 1;
+  someFun =
+    let f = x: x + 1;
+    in f 1;
 
-  someFun' = 
+  someFun' =
+    let f = x: y: x + y;
+    in f 1 2;
+
+  someFunAttrs =
+    let
+      f = { x, y }: x + y;
+    in f {
+      x = 2;
+      y = 3;
+    };
+
+  someFunAttrs' =
+    let
+      f = { x ? 1, y, ... }: x + y;
+    in f {
+      y = 3;
+      ignored = 4;
+    };
+
+  someFunAttrs'' =
+    let
+      f = { x ? 1, y, ... }: x + y;
+      g = attrs: attrs.x or 1 + attrs.y;
+      fg = attrs@{ x ? 1, y, ... }: x + y + attrs.notIgnored;
+      gf = { x ? 1, y, ... }@attrs: x + y;
+    in f {
+      y = 3;
+      ignored = 4;
+    };
+
+  ifExpr = if 1 + 1 == 2 then "Yes" else 10;
+
+  #functionMaybeArgument =
+  #  let f = { x, y, ... }@attrs: x + y + if attrs
 }
