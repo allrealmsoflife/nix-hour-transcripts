@@ -90,7 +90,22 @@
     };
 
   ifExpr = if 1 + 1 == 2 then "Yes" else 10;
+  
+  checkForAttributes =
+    let foo.bar.baz = 10;
+    in foo ? bar.baz;
 
-  #functionMaybeArgument =
-  #  let f = { x, y, ... }@attrs: x + y + if attrs
+  
+  functionMaybeArgument =
+    let 
+      f = { x, y, ... }@attrs:
+        x + y + (if attrs ? notIgnored then attrs.notIgnored else 0);
+      f' = { x, y, ... }@attrs:
+        x + y + attrs.notIgnored or 0;
+    in f { x = 1; y = 2; notIgnored = 3; };
+
+
+  functionDefaultsQuirk = 
+    let f = { x ? 10 }@attrs: attrs ? x;
+    in f {};
 }
