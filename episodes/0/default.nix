@@ -108,4 +108,9 @@
   functionDefaultsQuirk = 
     let f = { x ? 10 }@attrs: attrs ? x;
     in f {};
+
+  builtinFuns =
+    let
+      a = builtins.map (x: x + 1) [ 1 2 3 ];
+    in a;
 }
