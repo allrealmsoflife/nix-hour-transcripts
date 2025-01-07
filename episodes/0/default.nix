@@ -1,5 +1,5 @@
 # Attribute set
-{
+let
   foo = null;
   "foo.bar" = null;
 
@@ -113,4 +113,14 @@
     let
       a = builtins.map (x: x + 1) [ 1 2 3 ];
     in a;
-}
+
+  derivationBuiltin =
+    let
+      someDerivation = builtins.derivation {
+        name = "test";
+        builder = "/bin/sh";
+        system = "x86_64-linux";
+      };
+    in someDerivation;
+in
+  derivationBuiltin
