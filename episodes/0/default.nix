@@ -119,6 +119,7 @@ let
       someDerivation = builtins.derivation {
         name = "test";
         builder = "/bin/sh";
+        args = [ "-c" "echo foo > $out" ];
         system = "x86_64-linux";
       };
     in someDerivation;
