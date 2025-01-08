@@ -125,5 +125,12 @@ let
     in someDerivation;
 
   nixpkgs = builtins.fetchTarball "https://github.com/NixOS/nixpkgs/archive/master.tar.gz";
+ 
+  pkgs = import nixpkgs {
+    overlays = []; # Because by default ~/.config/nixpkgs/overlays
+    config = {}; # Because by default ~/.config/nixpkgs/config.nix
+    system = "x86_64-linux";
+    # system = builtins.currentSystem
+  };
 
-in nixpkgs
+in pkgs.hello
