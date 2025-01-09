@@ -133,4 +133,10 @@ let
     # system = builtins.currentSystem
   };
 
-in pkgs.hello
+  someCPackage = pkgs.stdenv.mkDerivation {
+    name = "someCPackage";
+
+    src = ./src;
+  };
+
+in someCPackage
