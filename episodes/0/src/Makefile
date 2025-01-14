@@ -1,5 +1,5 @@
 default:
-  echo bar >> foo
+	echo bar >> foo
 
 install:
-  mv foo $(out)
+	mv foo $(out)
