@@ -28,6 +28,8 @@ git merge upstream/master
 
 ```bash
 git clone https://github.com/tweag/nix-hour
+
+# This is not necessary, lfs files are just youtube video thumbnails
 nix-shell -p git-lfs --run "git lfs install --local; git lfs pull; git lfs checkout"
 ```
 
