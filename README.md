@@ -33,18 +33,44 @@ nix-shell -p git-lfs --run "git lfs install --local; git lfs pull; git lfs check
 
 The playlist on [youtube](https://www.youtube.com/playlist?list=PLyzwHTVJlRc8yjlx4VR4LU5A5O44og9in)
 
-
 ### Current Progress
 
 Below are the transcripts completed or in progress:
 
-- [0: Informal introduction to Nix language, derivations and nixpkgs](episodes/0/0.md) &#x2705;
-- 1: 
-- 2: Overriding derivations, fixed-output derivations, sharing closures
-- 3: Flake updating, nix edit and some corners of the nix language
-- [4: Comparing flakes to traditional nix](episodes/4/4.md) &#x2705;
-- [5: Overriding a rust source, derivation internally, closure inspection](episodes/5/5.md) &#x2705;
-- 52: The Nix Hour #52
+| no. | link                                                                                   | status   | transcriber                                                                          |
+| --- | -------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------ |
+| 0   | [Informal introduction to Nix language, derivations and nixpkgs](episodes/0/0.md)      | &#x2705; | [Domagoj Mišković][c1]                                                               |
+| 1   |                                                                                        | WIP      | [Domagoj Mišković][c1]                                                               |
+| 2   | Overriding derivations, fixed-output derivations, sharing closures                     | WIP      | [Domagoj Mišković][c1]                                                               |
+| 3   | Flake updating, nix edit and some corners of the nix language                          | WIP      | [Domagoj Mišković][c1]                                                               |
+| 4   | [Comparing flakes to traditional nix](episodes/4/4.md)                                 | &#x2705; | [Domagoj Mišković][c1]                                                               |
+| 5   | [Overriding a rust source, derivation internally, closure inspection](episodes/5/5.md) | &#x2705; | [Domagoj Mišković][c1]                                                               |
+| 52  | [The Nix Hour #52](episodes/52/52.md)                                                  | &#x2705; | [Phani Rithvij][c2] - https://github.com/allrealmsoflife/nix-hour-transcripts/pull/3 |
+| 67  | [Language Tooling](episodes/67/67.md)                                                  | &#x2705; | [Phani Rithvij][c2] - https://github.com/allrealmsoflife/nix-hour-transcripts/pull/4 |
+
+### Contributing
+
+If you are interested be warned, it will take a long time for each episode.
+
+> [!IMPORTANT]
+>
+> Before contributing make sure to open an issue in the repo with title clearly specifying what issues you would like to work on.
+>
+> eg. issues 52, 67
+>
+> This allows people to not waste time doing duplicate work.
+
+Also completed issues can have mistakes, or can use some different wording or other improvements
+
+please do send prs correcting them, if you find some!
+
+### TODO
+
+See [TODO.md](./TODO.md)
+
 ---
 
-*Transcriptions by Domagoj Mišković.*
+_Transcriptions by Domagoj Mišković and contributors._
+
+[c1]: https://github.com/allrealmsoflife
+[c2]: https://github.com/phanirithvij
