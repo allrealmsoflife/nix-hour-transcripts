@@ -54,6 +54,7 @@ Below are the transcripts completed or in progress:
 | 69  | [lookup path syntax](episodes/69/69.md)                                                | WIP      | [Phani Rithvij][c2]                                                                  |
 | 75  | [nix tooling](episodes/75/75.md)                                                       | &#x2705; | [Phani Rithvij][c2] - https://github.com/allrealmsoflife/nix-hour-transcripts/pull/6 |
 | 77  | [language tooling (again)](episodes/77/77.md)                                          | &#x2705; | [Phani Rithvij][c2] - https://github.com/allrealmsoflife/nix-hour-transcripts/pull/7 |
+| 81  | [Tricky package derivations)](episodes/81/81.md)                                       | WIP      | [Phani Rithvij][c2]                                                                  |
 
 ### Contributing
 
